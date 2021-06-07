@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import styles from './App.module.css';
+import React, { useEffect, useState } from 'react';
+import Cards from './components/Cards/Cards';
+import Chart from './components/Chart/Chart';
+import CountryPicker from './components/CountryPicker/CountryPicker';
+import CountryTable from './components/Table/CountryTable';
+import { fetchDataAll, fetchDataCountries } from './api';
 
 function App() {
+  const [dataAll, setDataAll] = useState({});
+  const [dataCountries, setDataCountries] = useState({});
+
+  const getDataAll = async () => {
+    const dataAll = await fetchDataAll();
+    setDataAll(dataAll);
+  };
+  const getDataCountries = async () => {
+    const dataCountries = await fetchDataCountries();
+    setDataCountries(dataCountries);
+  };
+  useEffect(() => {
+    getDataAll();
+    getDataCountries();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.container}>
+      <h1 className={styles.title}>Current World data of covid-19</h1>
+      <Cards data={dataAll} />
+      <CountryTable data={dataCountries} />
     </div>
   );
 }
