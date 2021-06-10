@@ -27,6 +27,8 @@ function App() {
     <div className={styles.container}>
       <h1 className={styles.title}>Current World data of covid-19</h1>
       <Cards data={dataAll} />
+      <CountryPicker dataCountries={dataCountries} dataAll={dataAll} />
+      <Chart data={dataCountries} />
       <CountryTable data={dataCountries} />
     </div>
   );

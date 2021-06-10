@@ -70,42 +70,18 @@ const CountryTable = ({ data }) => {
                   return (
                     <TableRow key={i}>
                       <TableCell key={e.name}>{e.name}</TableCell>
-                      <TableCell key={e.name + e.totalCases}>
-                        {e.totalCases}
-                      </TableCell>
-                      <TableCell key={e.name + e.newCases}>
-                        {e.newCases}
-                      </TableCell>
-                      <TableCell key={e.name + e.totalDeaths}>
-                        {e.totalDeaths}
-                      </TableCell>
-                      <TableCell key={e.name + e.newDeaths}>
-                        {e.newDeaths}
-                      </TableCell>
-                      <TableCell key={e.name + e.totalRecovered}>
-                        {e.totalRecovered}
-                      </TableCell>
-                      <TableCell key={e.name + e.activeCases}>
-                        {e.activeCases}
-                      </TableCell>
-                      <TableCell key={e.name + e.criticalCases}>
-                        {e.criticalCases}
-                      </TableCell>
-                      <TableCell key={e.name + e.casesPerMillion}>
-                        {e.casesPerMillion}
-                      </TableCell>
-                      <TableCell key={e.name + e.deathsPerMillion}>
-                        {e.deathsPerMillion}
-                      </TableCell>
-                      <TableCell key={e.name + e.totalTests}>
-                        {e.totalTests}
-                      </TableCell>
-                      <TableCell key={e.name + e.testsPerMillion}>
-                        {e.testsPerMillion}
-                      </TableCell>
-                      <TableCell key={e.name + e.population}>
-                        {e.population}
-                      </TableCell>
+                      <TableCell>{e.totalCases}</TableCell>
+                      <TableCell>{e.newCases}</TableCell>
+                      <TableCell>{e.totalDeaths}</TableCell>
+                      <TableCell>{e.newDeaths}</TableCell>
+                      <TableCell>{e.totalRecovered}</TableCell>
+                      <TableCell>{e.activeCases}</TableCell>
+                      <TableCell>{e.criticalCases}</TableCell>
+                      <TableCell>{e.casesPerMillion}</TableCell>
+                      <TableCell>{e.deathsPerMillion}</TableCell>
+                      <TableCell>{e.totalTests}</TableCell>
+                      <TableCell>{e.testsPerMillion}</TableCell>
+                      <TableCell>{e.population}</TableCell>
                     </TableRow>
                   );
                 })}
