@@ -71,7 +71,7 @@ const Chart = ({ dataAll, dataCountries, countryPicked }) => {
           </div>
         ) : (
           <div className={styles.titleDiv}>
-            <h1>World Info</h1>
+            <h1>World</h1>
           </div>
         )}
         <div>{barChart}</div>
