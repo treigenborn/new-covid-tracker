@@ -4,12 +4,15 @@ import styles from './Cards.module.css';
 import CountUp from 'react-countup';
 import cx from 'classnames';
 
-const Cards = ({ data: { cases, recovered, deaths } }) => {
+const Cards = ({
+  data: { cases, recovered, deaths },
+  dataCountries,
+  countryPicked,
+}) => {
   console.log();
   if (!cases) {
     return 'Loading..';
   }
-
   return (
     <div className={styles.container}>
       <Grid container spacing={3} justify='center'>
@@ -25,7 +28,16 @@ const Cards = ({ data: { cases, recovered, deaths } }) => {
               Infected
             </Typography>
             <Typography varaint='h5'>
-              <CountUp start={0} end={cases} duration={2.5} separator=',' />
+              <CountUp
+                start={0}
+                end={
+                  countryPicked
+                    ? dataCountries.data[countryPicked].cases
+                    : cases
+                }
+                duration={2.5}
+                separator=','
+              />
             </Typography>
             <Typography color='textSecondary'>
               {new Date().toDateString()}
@@ -47,7 +59,16 @@ const Cards = ({ data: { cases, recovered, deaths } }) => {
               Recovered
             </Typography>
             <Typography varaint='h5'>
-              <CountUp start={0} end={recovered} duration={2.5} separator=',' />
+              <CountUp
+                start={0}
+                end={
+                  countryPicked
+                    ? dataCountries.data[countryPicked].recovered
+                    : recovered
+                }
+                duration={2.5}
+                separator=','
+              />
             </Typography>
             <Typography color='textSecondary'>
               {new Date().toDateString()}
@@ -69,7 +90,16 @@ const Cards = ({ data: { cases, recovered, deaths } }) => {
               Deaths
             </Typography>
             <Typography varaint='h5'>
-              <CountUp start={0} end={deaths} duration={2.5} separator=',' />
+              <CountUp
+                start={0}
+                end={
+                  countryPicked
+                    ? dataCountries.data[countryPicked].deaths
+                    : deaths
+                }
+                duration={2.5}
+                separator=','
+              />
             </Typography>
             <Typography color='textSecondary'>
               {new Date().toDateString()}

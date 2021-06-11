@@ -9,6 +9,7 @@ import { fetchDataAll, fetchDataCountries } from './api';
 function App() {
   const [dataAll, setDataAll] = useState({});
   const [dataCountries, setDataCountries] = useState({});
+  const [countryPicked, setCountryPicked] = useState('');
 
   const getDataAll = async () => {
     const dataAll = await fetchDataAll();
@@ -23,12 +24,28 @@ function App() {
     getDataCountries();
   }, []);
 
+  const handleCountryChange = async (country) => {
+    const countryPicked = await country;
+    setCountryPicked(countryPicked);
+  };
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Current World data of covid-19</h1>
-      <Cards data={dataAll} />
-      <CountryPicker dataCountries={dataCountries} dataAll={dataAll} />
-      <Chart data={dataCountries} />
+      <Cards
+        data={dataAll}
+        dataCountries={dataCountries}
+        countryPicked={countryPicked}
+      />
+      <CountryPicker
+        dataCountries={dataCountries}
+        dataAll={dataAll}
+        handleCountryChange={handleCountryChange}
+      />
+      <Chart
+        dataAll={dataAll}
+        dataCountries={dataCountries}
+        countryPicked={countryPicked}
+      />
       <CountryTable data={dataCountries} />
     </div>
   );

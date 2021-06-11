@@ -2,19 +2,26 @@ import React from 'react';
 import styles from './CountryPicker.module.css';
 import { NativeSelect, FormControl } from '@material-ui/core';
 
-const CountryPicker = (props) => {
-  if (!props.dataCountries.data || !props.dataAll.cases) {
+const CountryPicker = ({ dataCountries, dataAll, handleCountryChange }) => {
+  if (!dataCountries.data || !dataAll.cases) {
     return null;
   } else {
-    console.log(props.dataAll);
-    console.log(props.dataCountries.data[7].country);
     return (
       <div className={styles.container}>
         <FormControl className={styles.formControl}>
-          <NativeSelect>
+          <NativeSelect
+            defaultValue=''
+            onChange={(e) => {
+              handleCountryChange(e.target.value);
+            }}
+          >
             <option value=''>Global</option>
-            {props.dataCountries.data.map((e) => {
-              return <option value={e.country}>{e.country}</option>;
+            {dataCountries.data.map((e, i) => {
+              return (
+                <option key={i} value={i}>
+                  {e.country}
+                </option>
+              );
             })}
           </NativeSelect>
         </FormControl>
